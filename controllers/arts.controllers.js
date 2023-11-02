@@ -4,6 +4,7 @@ const Imagekit = require('../libs/imagekit');
 const path = require('path');
 
 module.exports = {
+  // menambahkan gambar bersama judul dan deskripsi
   inputArt: async (req, res, next) => {
     try {
       let { judul, deskripsi } = req.body;
@@ -44,6 +45,7 @@ module.exports = {
     }
   },
 
+  // Melihat daftar gambar yang telah diunggah beserta informasi terkait
   indexArts: async (req, res, next) => {
     try {
       const art = await prisma.arts.findMany();
@@ -68,6 +70,7 @@ module.exports = {
     }
   },
 
+  // Melihat detail gambar beserta informasi terkait.
   showDetailArt: async (req, res, next) => {
     try {
       let { id } = req.params;
@@ -97,6 +100,7 @@ module.exports = {
     }
   },
 
+  // Menghapus gambar berdasarkan fileId tanpa menghapus judul dan deskripsi
   deleteImage: async (req, res, next) => {
     try {
       const { fileId } = req.params;
@@ -122,6 +126,7 @@ module.exports = {
     }
   },
 
+  // Mengedit judul dan deskripsi gambar yang telah diunggah.
   updateArt: async (req, res, next) => {
     try {
       let { id } = req.params;
